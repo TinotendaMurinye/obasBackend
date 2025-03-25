@@ -26,11 +26,15 @@ app.get("/", (req, res) => {
 
 // SSL Certificates
 const sslOptions = {
-  key: fs.readFileSync('/etc/letsencrypt/live/srv690692.hstgr.cloud/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/srv690692.hstgr.cloud/fullchain.pem'),// Replace with the path to your SSL certificate
+  key: fs.readFileSync(
+    "/etc/letsencrypt/live/srv690692.hstgr.cloud/privkey.pem"
+  ),
+  cert: fs.readFileSync(
+    "/etc/letsencrypt/live/srv690692.hstgr.cloud/fullchain.pem"
+  ), // Replace with the path to your SSL certificate
 };
 
 // Start the server with HTTPS
-https.createServer( app).listen(PORT, () => {
+https.createServer(sslOptions, app).listen(PORT, () => {
   console.log(`Server is running on https://localhost:${PORT}`);
 });
