@@ -8,7 +8,7 @@ const https = require("https");
 const fs = require("fs");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3012;
 
 // Middleware
 app.use(bodyParser.json());
@@ -31,6 +31,6 @@ const sslOptions = {
 };
 
 // Start the server with HTTPS
-https.createServer(sslOptions, app).listen(PORT, () => {
+https.createServer( app).listen(PORT, () => {
   console.log(`Server is running on https://localhost:${PORT}`);
 });
